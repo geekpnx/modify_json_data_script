@@ -22,17 +22,17 @@ try:
 
     # Loop over each product in the JSON data
     for product in json_data:
-        # Extract individual fields from the JSON object
+        # Extract individual fields from the JSON object, using .get() to handle missing optional fields
         values = (
-            product['store'],
-            product['name'],
-            product['description'],
-            product['price'],
-            product['currency'],
-            product['category'],
-            product['image'],
-            product['link'],
-            product['id_tag']
+            product.get('store'),  # Required field
+            product.get('name'),   # Required field
+            product.get('description'),  # Optional field, might be None
+            product.get('price'),  # Required field
+            product.get('currency'),  # Required field
+            product.get('category'),  # Required field
+            product.get('image'),  # Required field
+            product.get('link'),  # Required field
+            product.get('id_tag')  # Required field
         )
 
         # Execute the query for each product
